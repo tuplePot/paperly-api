@@ -1224,6 +1224,7 @@ sections.forEach(s => io.observe(s))
 </body>
 </html>`
 
+//cek
 export const docsModule = new Elysia()
   .use(html())
   .get('/docs', () => page)
