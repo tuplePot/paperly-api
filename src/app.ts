@@ -29,6 +29,7 @@ const app = new Elysia()
   .use(mongoosePlugin)
   .use(isProd ? new Elysia() : docsModule)
   .get('/', ({ set }) => { set.status = 404; return null })
+  .get('/health', () => ({ status: 'ok', service: 'paperly', timestamp: new Date().toISOString() }))
   .group('/api', (app) =>
     app
       // ── Admin (Vault Josh) — x-api-key required ─────────────────── /api/admin/*
