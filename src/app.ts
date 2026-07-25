@@ -16,6 +16,7 @@ import { highlightsModule } from './modules/highlights'
 // admin — Vault Josh (CMS web app)
 import { adminBooksRouter } from './modules/admin/books'
 import { adminUsersRouter } from './modules/admin/users'
+import { monitoringModule } from './modules/monitoring'
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -35,6 +36,7 @@ const app = new Elysia()
       // ── Admin (Vault Josh) — x-api-key required ─────────────────── /api/admin/*
       .use(adminBooksRouter)   // /api/admin/books
       .use(adminUsersRouter)   // /api/admin/users
+      .use(monitoringModule)   // /api/monitoring/*
       
       // ── User-facing (Paperly) — JWT required ─────────────────────── /api/v1/*
       .use(authModule)         // /api/v1/auth
